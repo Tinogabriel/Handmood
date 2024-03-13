@@ -1,0 +1,213 @@
+[gd_scene load_steps=40 format=2]
+
+[ext_resource path="res://Jogador 1.gd" type="Script" id=1]
+[ext_resource path="res://pumpkin/Run (1).png" type="Texture" id=2]
+[ext_resource path="res://pumpkin/Run (2).png" type="Texture" id=3]
+[ext_resource path="res://pumpkin/Run (3).png" type="Texture" id=4]
+[ext_resource path="res://pumpkin/Run (4).png" type="Texture" id=5]
+[ext_resource path="res://pumpkin/Run (5).png" type="Texture" id=6]
+[ext_resource path="res://pumpkin/Run (6).png" type="Texture" id=7]
+[ext_resource path="res://pumpkin/Run (7).png" type="Texture" id=8]
+[ext_resource path="res://pumpkin/Run (8).png" type="Texture" id=9]
+[ext_resource path="res://pumpkin/Idle (1).png" type="Texture" id=10]
+[ext_resource path="res://musiquinha.tres" type="AudioStream" id=11]
+[ext_resource path="res://Bola.gd" type="Script" id=12]
+[ext_resource path="res://5a36c1ea5263e4.5759793215135380263375.png" type="Texture" id=13]
+[ext_resource path="res://jogador 2.gd" type="Script" id=14]
+[ext_resource path="res://dog/Run (1).png" type="Texture" id=15]
+[ext_resource path="res://dog/Run (2).png" type="Texture" id=16]
+[ext_resource path="res://dog/Run (3).png" type="Texture" id=17]
+[ext_resource path="res://dog/Run (4).png" type="Texture" id=18]
+[ext_resource path="res://dog/Run (5).png" type="Texture" id=19]
+[ext_resource path="res://dog/Run (6).png" type="Texture" id=20]
+[ext_resource path="res://dog/Run (7).png" type="Texture" id=21]
+[ext_resource path="res://dog/Run (8).png" type="Texture" id=22]
+[ext_resource path="res://dog/Idle (1).png" type="Texture" id=23]
+[ext_resource path="res://Piso.gd" type="Script" id=24]
+[ext_resource path="res://Piso2.gd" type="Script" id=25]
+[ext_resource path="res://pumpkin/GloriaHallelujah-Regular(1).ttf" type="DynamicFontData" id=26]
+[ext_resource path="res://CENÁRIO1.png" type="Texture" id=27]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ) ],
+"loop": true,
+"name": "Run",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 10 ) ],
+"loop": true,
+"name": "Idle",
+"speed": 5.0
+} ]
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 23.2131
+height = 22.5189
+
+[sub_resource type="PhysicsMaterial" id=3]
+bounce = 2.0
+
+[sub_resource type="CircleShape2D" id=4]
+
+[sub_resource type="CircleShape2D" id=5]
+radius = 13.1023
+
+[sub_resource type="SpriteFrames" id=6]
+animations = [ {
+"frames": [ ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ) ],
+"loop": true,
+"name": "Run",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 23 ) ],
+"loop": true,
+"name": "Idle",
+"speed": 5.0
+} ]
+
+[sub_resource type="CapsuleShape2D" id=7]
+radius = 20.6395
+height = 28.0276
+
+[sub_resource type="RectangleShape2D" id=8]
+extents = Vector2( 264.517, 34.7149 )
+
+[sub_resource type="RectangleShape2D" id=9]
+extents = Vector2( 273.099, 33.6108 )
+
+[sub_resource type="RectangleShape2D" id=10]
+extents = Vector2( 10.4215, 99.7603 )
+
+[sub_resource type="DynamicFont" id=11]
+size = 35
+outline_color = Color( 0.466667, 0.121569, 0.121569, 1 )
+font_data = ExtResource( 26 )
+
+[sub_resource type="DynamicFont" id=12]
+size = 35
+font_data = ExtResource( 26 )
+
+[node name="Principal" type="Node2D"]
+position = Vector2( 0.0680884, 1.82266 )
+
+[node name="Jogador 1" type="KinematicBody2D" parent="."]
+position = Vector2( 44.1958, 289.378 )
+script = ExtResource( 1 )
+
+[node name="Sprite" type="AnimatedSprite" parent="Jogador 1"]
+position = Vector2( 196.484, 157.879 )
+scale = Vector2( 0.124976, 0.114447 )
+frames = SubResource( 1 )
+animation = "Run"
+frame = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Jogador 1"]
+position = Vector2( 197.248, 162.119 )
+shape = SubResource( 2 )
+
+[node name="musica" type="AudioStreamPlayer2D" parent="Jogador 1"]
+pause_mode = 1
+stream = ExtResource( 11 )
+volume_db = -3.239
+autoplay = true
+
+[node name="Bolla" type="RigidBody2D" parent="."]
+position = Vector2( 236.974, 49.7897 )
+physics_material_override = SubResource( 3 )
+gravity_scale = 3.64
+script = ExtResource( 12 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bolla"]
+shape = SubResource( 4 )
+
+[node name="Area2D" type="Area2D" parent="Bolla"]
+position = Vector2( -0.915817, -0.91581 )
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bolla/Area2D"]
+position = Vector2( 0.915833, 0.915806 )
+shape = SubResource( 5 )
+
+[node name="Ball" type="Sprite" parent="Bolla"]
+position = Vector2( 0.175759, 0.00717363 )
+scale = Vector2( 0.0317621, 0.031457 )
+texture = ExtResource( 13 )
+
+[node name="colisao externa" type="StaticBody2D" parent="."]
+position = Vector2( 0.250206, 219.694 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="colisao externa"]
+polygon = PoolVector2Array( -55.3574, -285.97, 1097.41, -285.97, 1098.16, 449.108, -104.19, 446.017, -101.099, -222.569, -1.35216, -222.45, 8.57681, 265.808, 1017.36, 265.808, 1024.48, -221.69, -3.30107, -223.276 )
+
+[node name="jogador 2" type="KinematicBody2D" parent="."]
+position = Vector2( 824.101, 407.528 )
+script = ExtResource( 14 )
+
+[node name="Sprite" type="AnimatedSprite" parent="jogador 2"]
+position = Vector2( 4.66822, 36.4227 )
+scale = Vector2( 0.198119, 0.19474 )
+frames = SubResource( 6 )
+animation = "Run"
+frame = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="jogador 2"]
+position = Vector2( 7.19775, 43.7643 )
+shape = SubResource( 7 )
+
+[node name="Piso" type="StaticBody2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource( 24 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Piso"]
+position = Vector2( 246.92, 512.605 )
+shape = SubResource( 8 )
+
+[node name="Piso2" type="StaticBody2D" parent="."]
+position = Vector2( 1.49012e-008, 2.38419e-006 )
+collision_layer = 2
+collision_mask = 2
+script = ExtResource( 25 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Piso2"]
+position = Vector2( 773.708, 511.612 )
+shape = SubResource( 9 )
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+position = Vector2( 442.443, 323.581 )
+
+[node name="rede" type="CollisionShape2D" parent="StaticBody2D2"]
+position = Vector2( 64.2419, 102.063 )
+shape = SubResource( 10 )
+
+[node name="placar" type="Label" parent="."]
+modulate = Color( 0.0666667, 0.0823529, 0.45098, 1 )
+margin_left = 802.419
+margin_top = 18.5469
+margin_right = 868.419
+margin_bottom = 89.5469
+custom_fonts/font = SubResource( 11 )
+text = "0"
+
+[node name="placar2" type="Label" parent="."]
+self_modulate = Color( 0.101961, 0.121569, 0.407843, 1 )
+margin_left = 73.0
+margin_top = 24.0
+margin_right = 160.0
+margin_bottom = 67.0
+custom_fonts/font = SubResource( 12 )
+text = "0"
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2( -40, -15.6978 )
+scale = Vector2( 1.33089, 1.25151 )
+texture = ExtResource( 27 )
+centered = false
+[connection signal="body_entered" from="Bolla/Area2D" to="Piso2" method="_on_Area2D_body_entered"]
+[connection signal="body_exited" from="Bolla/Area2D" to="Piso" method="_on_Area2D_body_exited"]

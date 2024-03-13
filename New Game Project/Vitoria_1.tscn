@@ -1,0 +1,89 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Vitoria_1.gd" type="Script" id=1]
+[ext_resource path="res://pumpkin/Slide (1).png" type="Texture" id=2]
+[ext_resource path="res://dog/Dead (10).png" type="Texture" id=3]
+[ext_resource path="res://fazenda.png" type="Texture" id=4]
+[ext_resource path="res://pumpkin/Bangers-Regular.ttf" type="DynamicFontData" id=5]
+
+[sub_resource type="DynamicFontData" id=1]
+font_path = "res://pumpkin/Bangers-Regular.ttf"
+
+[sub_resource type="DynamicFont" id=2]
+size = 91
+font_data = SubResource( 1 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 40
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 40
+font_data = ExtResource( 5 )
+
+[node name="Vitoria_1" type="Control"]
+script = ExtResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+
+[node name="Slide (1)" type="Sprite" parent="Sprite"]
+position = Vector2( 519.875, 251.897 )
+scale = Vector2( 0.556892, 0.546231 )
+texture = ExtResource( 2 )
+
+[node name="Dead (10)" type="Sprite" parent="."]
+position = Vector2( 108.49, 388.005 )
+scale = Vector2( 0.690356, 0.614545 )
+texture = ExtResource( 3 )
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2( 514.511, 283.952 )
+scale = Vector2( 1.24892, 1.35876 )
+texture = ExtResource( 4 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = 286.304
+margin_top = 389.979
+margin_right = 784.304
+margin_bottom = 517.979
+custom_fonts/font = SubResource( 2 )
+text = "Vitória Player 1"
+
+[node name="Label2" type="Label" parent="."]
+margin_left = 747.804
+margin_top = 528.246
+margin_right = 996.804
+margin_bottom = 580.246
+custom_fonts/font = SubResource( 3 )
+text = "Jogar Novamente"
+
+[node name="reiniciar" type="Button" parent="."]
+self_modulate = Color( 1, 1, 1, 0 )
+show_behind_parent = true
+margin_left = 755.081
+margin_top = 523.838
+margin_right = 987.081
+margin_bottom = 575.838
+text = "Reiniciar"
+
+[node name="sair" type="Button" parent="."]
+self_modulate = Color( 1, 1, 1, 0 )
+show_behind_parent = true
+margin_left = 91.0
+margin_top = 530.0
+margin_right = 169.0
+margin_bottom = 577.0
+
+[node name="Label3" type="Label" parent="."]
+margin_left = 99.2424
+margin_top = 532.081
+margin_right = 182.242
+margin_bottom = 578.081
+custom_fonts/font = SubResource( 4 )
+text = "Sair"
+[connection signal="pressed" from="reiniciar" to="." method="_on_reiniciar_pressed"]
+[connection signal="pressed" from="sair" to="." method="_on_sair_pressed"]
